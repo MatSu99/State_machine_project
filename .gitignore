@@ -1,2 +1,4 @@
 *.out
 project_build/
+my_notes/
+.vscode/

@@ -7,3 +7,11 @@ StateBase::StateBase() {
 StateBase::~StateBase() {
 
 };
+
+unsigned int StateBase::GetStateId() {
+    return StateId;
+}
+
+std::string StateBase::GetNameOfState() {
+    return NameOfState;
+}
