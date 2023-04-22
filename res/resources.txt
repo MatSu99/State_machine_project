@@ -1,0 +1,5 @@
+1|Apple Juice|150|20|
+2|Orange Juice|160|20|
+3|Milk chocolate|300|10|
+4|Dark chocolate|310|10|
+5|Oatmeal bar|400|10|

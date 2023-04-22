@@ -5,6 +5,7 @@
 #include <memory>
 
 #include "type_resource.h"
+#include "file_handler.h"
 
 class ResourceManager {
     private:
@@ -24,6 +25,7 @@ class ResourceManager {
     ResourceManager();
     ~ResourceManager();
     bool PutResourceIntoVector(Resource Res);
-    std::unique_ptr<Resource> CreateResourceObject(int ID, std::string Name, int Price, int Amount);
+    std::shared_ptr<Resource> CreateResourceObject(int ID, std::string Name, int Price, int Amount);
     void PrintVectorOfResources();
+    bool ProcessResources(std::string ResourcesInput);
 };
