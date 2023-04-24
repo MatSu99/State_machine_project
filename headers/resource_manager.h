@@ -28,4 +28,7 @@ class ResourceManager {
     std::shared_ptr<Resource> CreateResourceObject(int ID, std::string Name, int Price, int Amount);
     void PrintVectorOfResources();
     bool ProcessResources(std::string ResourcesInput);
+    bool checkConnectionPayment(bool Connection);
+    bool GetCoinsStored(std::string ResourceInput);
+    bool UpdateCoinsStored(std::string ResourceInput);
 };

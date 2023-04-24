@@ -148,3 +148,18 @@ bool ResourceManager::ProcessResources(std::string ResourcesInput) {
     return status;
 
 }
+
+bool ResourceManager::checkConnectionPayment(bool Connection) {
+    //TODO 
+    return Connection;
+}
+
+bool ResourceManager::GetCoinsStored(std::string ResourceInput) {
+    //TODO Implementation similar to ProcessResources
+    return true;
+}
+
+bool ResourceManager::UpdateCoinsStored(std::string ResourceInput) {
+    //TODO This will modify coins.txt
+    return true;
+}
