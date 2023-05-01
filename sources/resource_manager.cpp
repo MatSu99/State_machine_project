@@ -135,18 +135,14 @@ bool ResourceManager::ProcessResources(std::string ResourcesInput) {
         if(phase == 4) {
             std::__shared_ptr<Resource> Resource_ptr = CreateResourceObject(ID, Name, Price, Amount);
             PutResourceIntoVector(*Resource_ptr);
-            // Resource_ptr->PrintResourceData();
-
             phase = 0;
             ID = 0;
             Name.clear();
             Price = 0;
-            Amount = 0;
-            
+            Amount = 0;          
         }
     }
     return status;
-
 }
 
 bool ResourceManager::checkConnectionPayment(bool Connection) {
@@ -154,12 +150,77 @@ bool ResourceManager::checkConnectionPayment(bool Connection) {
     return Connection;
 }
 
+bool ResourceManager::updateConnectionPayment(bool ConnectionStatus) {
+    StatusConnectionPayment = ConnectionStatus;
+    return true;
+}
+
 bool ResourceManager::GetCoinsStored(std::string ResourceInput) {
-    //TODO Implementation similar to ProcessResources
+    FileHandler FileHandlerInstance;
+    std::vector<int> NumbersOfCoins;
+    NumbersOfCoins = FileHandlerInstance.GetInfoCoins("coins.txt");
+
+    for(int i = 0; i<8; ++i) {
+
+        switch(i) {
+
+            case 0:
+            VectorOfCash.push_back(std::make_tuple(NumbersOfCoins[i], cent1));
+
+            case 1:
+            VectorOfCash.push_back(std::make_tuple(NumbersOfCoins[i], cent2));
+
+            case 2:
+            VectorOfCash.push_back(std::make_tuple(NumbersOfCoins[i], cent5));
+
+            case 3:
+            VectorOfCash.push_back(std::make_tuple(NumbersOfCoins[i], cent10));
+
+            case 4:
+            VectorOfCash.push_back(std::make_tuple(NumbersOfCoins[i], cent20));
+
+            case 5:
+            VectorOfCash.push_back(std::make_tuple(NumbersOfCoins[i], cent50));
+
+            case 6:
+            VectorOfCash.push_back(std::make_tuple(NumbersOfCoins[i], euro1));
+
+            case 7:
+            VectorOfCash.push_back(std::make_tuple(NumbersOfCoins[i], euro2));
+
+            default:
+            // ! ERROR !
+            return false;
+        }
+    }
     return true;
 }
 
 bool ResourceManager::UpdateCoinsStored(std::string ResourceInput) {
-    //TODO This will modify coins.txt
+    // TODO This will modify coins.txt
     return true;
+}
+
+void ResourceManager::PrintVectorOfCash() {
+    for(int i = 0; i < VectorOfCash.size(); ++i) {  
+        std::cout   << i
+                    << " Amount: "
+                    << std::get<0>(VectorOfCash[i])
+                    << " Value: "
+                    << std::get<1>(VectorOfCash[i])
+                    << "\n";
+    }
+    return;
+}
+
+bool ResourceManager::ProcessCashPayment(int PriceOfProduct, std::vector<std::tuple<int,Coins>> EnteredCoins) {
+    // TODO
+}
+
+bool ResourceManager::ProcessCardPayment(int PriceOfProduct) {
+    // TODO
+}
+
+bool ResourceManager::CheckCompilanceOfCoins() {
+    // TODO
 }

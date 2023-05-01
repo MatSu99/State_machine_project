@@ -26,5 +26,8 @@ int main () {
     Test_3.ProcessResources("X");
     Test_3.PrintVectorOfResources();
 
+    Test_3.GetCoinsStored("coins.txt");
+    Test_3.PrintVectorOfCash();
+
     return 0;
 }

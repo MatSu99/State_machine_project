@@ -24,11 +24,22 @@ class ResourceManager {
     public:
     ResourceManager();
     ~ResourceManager();
+
     bool PutResourceIntoVector(Resource Res);
     std::shared_ptr<Resource> CreateResourceObject(int ID, std::string Name, int Price, int Amount);
     void PrintVectorOfResources();
     bool ProcessResources(std::string ResourcesInput);
+
     bool checkConnectionPayment(bool Connection);
+    bool updateConnectionPayment(bool ConnectionStatus);
+
     bool GetCoinsStored(std::string ResourceInput);
     bool UpdateCoinsStored(std::string ResourceInput);
+    // TODO Check if VactorOfCash data and coins.txt data are the same
+    bool CheckCompilanceOfCoins();
+    void PrintVectorOfCash();
+
+    bool ProcessCashPayment(int PriceOfProduct, std::vector<std::tuple<int,Coins>> EnteredCoins);
+    // TODO Card Payment
+    bool ProcessCardPayment(int PriceOfProduct);
 };
