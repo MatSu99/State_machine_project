@@ -29,5 +29,8 @@ int main () {
     Test_3.GetCoinsStored("coins.txt");
     Test_3.PrintVectorOfCash();
 
+    std::string test_string = "TEST";
+    Test_4.ModifyFile("test_file.txt", test_string);
+
     return 0;
 }

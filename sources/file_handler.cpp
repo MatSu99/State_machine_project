@@ -30,8 +30,22 @@ std::string FileHandler::GetInfoFromFile(std::string NameOfFile) {
     
 }
 
-std::string FileHandler::ModifyFile(std::string NameOfFile) {
-    return "NOT IMPLEMENTED";
+std::string FileHandler::ModifyFile(std::string NameOfFile, std::string Input) {
+    std::string Path = "../res/";
+    Path += NameOfFile;
+    std::ofstream File;
+    File.open(Path, std::ios::out);
+
+    if(File.good() == false) {
+    // ! ERROR
+    return "result";
+    }
+
+    File << Input;
+    File.close();
+
+    // TODO Change probably to bool
+    return "DONE";
 }
 
 std::vector<int> FileHandler::GetInfoCoins(std::string NameOfFile) {
