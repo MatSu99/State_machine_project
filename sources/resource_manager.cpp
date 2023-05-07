@@ -196,8 +196,9 @@ bool ResourceManager::GetCoinsStored(std::string ResourceInput) {
     return true;
 }
 
-bool ResourceManager::UpdateCoinsStored(std::string ResourceInput) {
-    // TODO This will modify coins.txt
+bool ResourceManager::UpdateCoinsStored(std::string ResourceOutput) {
+    FileHandler FileHandlerInstance;
+    FileHandlerInstance.ModifyFile(ResourceOutput, CurrentCoinsAsString());
     return true;
 }
 
@@ -223,4 +224,99 @@ bool ResourceManager::ProcessCardPayment(int PriceOfProduct) {
 
 bool ResourceManager::CheckCompilanceOfCoins() {
     // TODO
+}
+
+std::string ResourceManager::CurrentCoinsAsString() {
+    std::string result;
+
+    for (const std::tuple<int,Coins>& i : VectorOfCash) {
+        result += std::to_string(std::get<0>(i));
+        result += '\n';
+    }
+
+    if(result.empty() == false) {
+        result.pop_back();
+    }
+    else {
+        return "ERROR";
+    }
+
+    return result;
+}
+
+int ResourceManager::GetAmountOfCoins(Coins Coin) {
+    switch (Coin) {
+
+        case cent1:
+            return std::get<0>(VectorOfCash[0]);
+
+        case cent2:
+            return std::get<0>(VectorOfCash[1]);
+
+        case cent5:
+            return std::get<0>(VectorOfCash[2]);
+
+        case cent10:
+            return std::get<0>(VectorOfCash[3]);
+
+        case cent20:
+            return std::get<0>(VectorOfCash[4]);
+
+        case cent50:
+            return std::get<0>(VectorOfCash[5]);
+
+        case euro1:
+            return std::get<0>(VectorOfCash[6]);
+
+        case euro2:
+            return std::get<0>(VectorOfCash[7]);
+        
+        default:
+            // ! ERROR !
+            return -1;
+
+    }
+}
+
+bool ResourceManager::UpdateAmountOfCoinsLocally(int Amount, Coins Coin) {
+    std::tuple<int,Coins> Temp_Tuple = std::make_tuple(Amount, Coin);
+    switch (Coin) {
+
+        case cent1:
+            VectorOfCash[0] = Temp_Tuple;
+            return true;
+
+        case cent2:
+            VectorOfCash[1] = Temp_Tuple;
+            return true;
+
+        case cent5:
+            VectorOfCash[2] = Temp_Tuple;
+            return true;
+
+        case cent10:
+            VectorOfCash[3] = Temp_Tuple;
+            return true;
+
+        case cent20:
+            VectorOfCash[4] = Temp_Tuple;
+            return true;
+
+        case cent50:
+            VectorOfCash[5] = Temp_Tuple;
+            return true;
+
+        case euro1:
+            VectorOfCash[6] = Temp_Tuple;
+            return true;
+
+        case euro2:
+            VectorOfCash[7] = Temp_Tuple;
+            return true;
+        
+        default:
+            // ! ERROR !
+            return false;
+
+    }
 }

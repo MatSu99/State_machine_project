@@ -31,6 +31,10 @@ int main () {
 
     std::string test_string = "TEST";
     Test_4.ModifyFile("test_file.txt", test_string);
+    std::cout << Test_3.CurrentCoinsAsString();
+
+    Test_3.UpdateAmountOfCoinsLocally(123, ResourceManager::euro1);
+    Test_3.UpdateCoinsStored("coins.txt");
 
     return 0;
 }

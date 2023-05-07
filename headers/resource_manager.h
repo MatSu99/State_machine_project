@@ -11,7 +11,11 @@ class ResourceManager {
     private:
     std::vector<Resource> VectorOfResources;
     bool StatusConnectionPayment;
-    enum Coins {cent1 = 1,
+
+    public:
+    ResourceManager();
+    ~ResourceManager();
+        enum Coins {cent1 = 1,
                 cent2 = 2,
                 cent5 = 5,
                 cent10 = 10,
@@ -19,11 +23,6 @@ class ResourceManager {
                 cent50 = 50,
                 euro1 = 100, 
                 euro2 = 200};
-    std::vector<std::tuple<int,Coins>> VectorOfCash;
-
-    public:
-    ResourceManager();
-    ~ResourceManager();
 
     bool PutResourceIntoVector(Resource Res);
     std::shared_ptr<Resource> CreateResourceObject(int ID, std::string Name, int Price, int Amount);
@@ -34,7 +33,7 @@ class ResourceManager {
     bool updateConnectionPayment(bool ConnectionStatus);
 
     bool GetCoinsStored(std::string ResourceInput);
-    bool UpdateCoinsStored(std::string ResourceInput);
+    bool UpdateCoinsStored(std::string ResourceOutput);
     // TODO Check if VactorOfCash data and coins.txt data are the same
     bool CheckCompilanceOfCoins();
     void PrintVectorOfCash();
@@ -42,4 +41,11 @@ class ResourceManager {
     bool ProcessCashPayment(int PriceOfProduct, std::vector<std::tuple<int,Coins>> EnteredCoins);
     // TODO Card Payment
     bool ProcessCardPayment(int PriceOfProduct);
+
+    std::string CurrentCoinsAsString();
+    int GetAmountOfCoins(Coins Coin);
+    bool UpdateAmountOfCoinsLocally(int Amount, Coins Coin);
+
+    private:
+    std::vector<std::tuple<int,Coins>> VectorOfCash;
 };
