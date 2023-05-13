@@ -28,6 +28,7 @@ int main () {
 
     Test_3.GetCoinsStored("coins.txt");
     Test_3.PrintVectorOfCash();
+    std::cout << "result> " << Test_3.CheckCompilanceOfCoins() << "\n";
 
     std::string test_string = "TEST";
     Test_4.ModifyFile("test_file.txt", test_string);
@@ -35,6 +36,7 @@ int main () {
 
     Test_3.UpdateAmountOfCoinsLocally(123, ResourceManager::euro1);
     Test_3.UpdateCoinsStored("coins.txt");
+    std::cout << "\nresult> " << Test_3.CheckCompilanceOfCoins() << "\n";
 
     return 0;
 }

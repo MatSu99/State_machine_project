@@ -1,4 +1,5 @@
 #include "../headers/resource_manager.h"
+#define NAME_OF_FILE_WITH_COINS "coins.txt"
 
 ResourceManager::ResourceManager() {
     StatusConnectionPayment = false;
@@ -196,6 +197,47 @@ bool ResourceManager::GetCoinsStored(std::string ResourceInput) {
     return true;
 }
 
+std::vector<std::tuple<int,ResourceManager::Coins>> ResourceManager::GetCoinsStoredAsVector(std::string ResourceInput) {
+    FileHandler FileHandlerInstance;
+    std::vector<int> NumbersOfCoins;
+    NumbersOfCoins = FileHandlerInstance.GetInfoCoins("coins.txt");
+    std::vector<std::tuple<int,Coins>> Vector_to_return;
+    for(int i = 0; i<8; ++i) {
+
+        switch(i) {
+
+            case 0:
+            Vector_to_return.push_back(std::make_tuple(NumbersOfCoins[i], cent1));
+
+            case 1:
+            Vector_to_return.push_back(std::make_tuple(NumbersOfCoins[i], cent2));
+
+            case 2:
+            Vector_to_return.push_back(std::make_tuple(NumbersOfCoins[i], cent5));
+
+            case 3:
+            Vector_to_return.push_back(std::make_tuple(NumbersOfCoins[i], cent10));
+
+            case 4:
+            Vector_to_return.push_back(std::make_tuple(NumbersOfCoins[i], cent20));
+
+            case 5:
+            Vector_to_return.push_back(std::make_tuple(NumbersOfCoins[i], cent50));
+
+            case 6:
+            Vector_to_return.push_back(std::make_tuple(NumbersOfCoins[i], euro1));
+
+            case 7:
+            Vector_to_return.push_back(std::make_tuple(NumbersOfCoins[i], euro2));
+
+            default:
+            // ! ERROR !
+            return Vector_to_return;
+        }
+    }
+    return Vector_to_return;
+}
+
 bool ResourceManager::UpdateCoinsStored(std::string ResourceOutput) {
     FileHandler FileHandlerInstance;
     FileHandlerInstance.ModifyFile(ResourceOutput, CurrentCoinsAsString());
@@ -222,8 +264,18 @@ bool ResourceManager::ProcessCardPayment(int PriceOfProduct) {
     // TODO
 }
 
+// TODO
+// Check with return is ok but it should also
+// return some details about where there is
+// an inconsistence
 bool ResourceManager::CheckCompilanceOfCoins() {
-    // TODO
+    std::vector<std::tuple<int,Coins>> CoinsFromMachine = GetCoinsStoredAsVector(NAME_OF_FILE_WITH_COINS);
+    if(CoinsFromMachine == VectorOfCash) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 std::string ResourceManager::CurrentCoinsAsString() {

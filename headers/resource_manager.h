@@ -33,8 +33,8 @@ class ResourceManager {
     bool updateConnectionPayment(bool ConnectionStatus);
 
     bool GetCoinsStored(std::string ResourceInput);
+    std::vector<std::tuple<int,Coins>> GetCoinsStoredAsVector(std::string ResourceInput);
     bool UpdateCoinsStored(std::string ResourceOutput);
-    // TODO Check if VactorOfCash data and coins.txt data are the same
     bool CheckCompilanceOfCoins();
     void PrintVectorOfCash();
 
