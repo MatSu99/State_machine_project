@@ -2,3 +2,5 @@
 project_build/
 my_notes/
 .vscode/
+/tests/tests_build
+*sh

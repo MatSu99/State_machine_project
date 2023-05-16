@@ -5,6 +5,7 @@ Resource::Resource() {
     ResourceId = 0;
     NameOfResource = "";
     PriceOfResource = 0;
+    AmountOfResource = 0;
 }
 
 Resource::~Resource() {
