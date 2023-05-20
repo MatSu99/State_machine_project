@@ -7,7 +7,7 @@ TEST(TypeResource, Initialization) {
     EXPECT_EQ(Test_Resource.GetResourceID() , 0);
     EXPECT_EQ(Test_Resource.GetResourceName(), "");
     EXPECT_EQ(Test_Resource.GetReourcePrice(), 0);
-
+    EXPECT_EQ(Test_Resource.GetAmountOfResource(), 0);
 }
 
 TEST(TypeResource, FetchingData) {
@@ -24,4 +24,22 @@ TEST(TypeResource, FetchingData) {
     EXPECT_EQ(Test_Resource.GetResourceName(), Name);
     EXPECT_EQ(Test_Resource.GetReourcePrice(), Price);
     EXPECT_EQ(Test_Resource.GetAmountOfResource(), Amount);
+}
+
+TEST( TypeResource, SettingNewPrice) {
+    Resource Test_Resource;
+
+    Test_Resource.SetPrice(4000);
+
+    EXPECT_EQ(Test_Resource.GetReourcePrice(), 4000);
+
+}
+
+TEST(TypeResource, GetResourceDataAsString) {
+    Resource Test_Resource;
+
+    std::string Expected_Result = "Resource ID: 0\n"
+    "Resource name: \nPrice: 0\nAmount: 0";
+
+    EXPECT_EQ(Test_Resource.GetResourceData(), Expected_Result);
 }
