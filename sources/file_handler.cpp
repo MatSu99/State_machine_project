@@ -70,3 +70,14 @@ std::vector<int> FileHandler::GetInfoCoins(std::string NameOfFile) {
     return result;
 
 }
+// TODO All functions should take full path to target file
+bool FileHandler::CheckIfFileExists(std::string PathToFile) {
+    std::fstream File;
+    File.open(PathToFile, std::ios::in);
+
+    if(File.good() == false) {
+        return false;
+    }
+
+    return true;
+}

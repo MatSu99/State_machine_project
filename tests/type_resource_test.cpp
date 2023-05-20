@@ -31,7 +31,7 @@ TEST( TypeResource, SettingNewPrice) {
 
     Test_Resource.SetPrice(4000);
 
-    EXPECT_EQ(Test_Resource.GetReourcePrice(), 4000);
+    ASSERT_EQ(Test_Resource.GetReourcePrice(), 4000);
 
 }
 
@@ -41,5 +41,5 @@ TEST(TypeResource, GetResourceDataAsString) {
     std::string Expected_Result = "Resource ID: 0\n"
     "Resource name: \nPrice: 0\nAmount: 0";
 
-    EXPECT_EQ(Test_Resource.GetResourceData(), Expected_Result);
+    ASSERT_EQ(Test_Resource.GetResourceData(), Expected_Result);
 }
