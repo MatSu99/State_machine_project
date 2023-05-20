@@ -11,8 +11,13 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(googletest)
 file(GLOB TESTS "*.cpp")
-file(GLOB SOURCES "../sources/*.cpp")
-list(REMOVE_ITEM SOURCES "../sources/main.cpp")
+get_filename_component(path_to_sources ${CMAKE_CURRENT_SOURCE_DIR}/../sources/*.cpp ABSOLUTE)
+message("${path_to_sources}")
+file(GLOB SOURCES "${path_to_sources}")
+variable_watch(SOURCES)
+get_filename_component(full_path_to_main ${CMAKE_CURRENT_SOURCE_DIR}tests/../sources/main.cpp ABSOLUTE)
+message("${full_path_to_main}")
+list(REMOVE_ITEM SOURCES "${full_path_to_main}")
 include_directories(../headers)
 
 enable_testing()
