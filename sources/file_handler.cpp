@@ -76,8 +76,9 @@ bool FileHandler::CheckIfFileExists(std::string PathToFile) {
     File.open(PathToFile, std::ios::in);
 
     if(File.good() == false) {
+        File.close();
         return false;
     }
-
+    File.close();
     return true;
 }
