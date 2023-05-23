@@ -47,7 +47,7 @@ void ResourceManager::PrintVectorOfResources() {
 }
 
 //TODO Change hard coded name of file to using input arg
-bool ResourceManager::ProcessResources(std::string ResourcesInput) {
+bool ResourceManager::ProcessResources(std::string PathToFile) {
     std::string to_process;
     std::string proccessing_now;
     bool status = true;
@@ -57,7 +57,7 @@ bool ResourceManager::ProcessResources(std::string ResourcesInput) {
     int Price;
     int Amount;
     FileHandler FileHandlerInstance;
-    to_process = FileHandlerInstance.GetInfoFromFile("resources.txt");
+    to_process = FileHandlerInstance.GetInfoFromFile(PathToFile);
     std::string::iterator it=to_process.begin();
     while (it != to_process.end()){
 
@@ -156,10 +156,10 @@ bool ResourceManager::updateConnectionPayment(bool ConnectionStatus) {
     return true;
 }
 
-bool ResourceManager::GetCoinsStored(std::string ResourceInput) {
+bool ResourceManager::GetCoinsStored(std::string PathToFile) {
     FileHandler FileHandlerInstance;
     std::vector<int> NumbersOfCoins;
-    NumbersOfCoins = FileHandlerInstance.GetInfoCoins("coins.txt");
+    NumbersOfCoins = FileHandlerInstance.GetInfoCoins(PathToFile);
 
     for(int i = 0; i<8; ++i) {
 
@@ -197,10 +197,10 @@ bool ResourceManager::GetCoinsStored(std::string ResourceInput) {
     return true;
 }
 
-std::vector<std::tuple<int,ResourceManager::Coins>> ResourceManager::GetCoinsStoredAsVector(std::string ResourceInput) {
+std::vector<std::tuple<int,ResourceManager::Coins>> ResourceManager::GetCoinsStoredAsVector(std::string PathToFile) {
     FileHandler FileHandlerInstance;
     std::vector<int> NumbersOfCoins;
-    NumbersOfCoins = FileHandlerInstance.GetInfoCoins("coins.txt");
+    NumbersOfCoins = FileHandlerInstance.GetInfoCoins(PathToFile);
     std::vector<std::tuple<int,Coins>> Vector_to_return;
     for(int i = 0; i<8; ++i) {
 
@@ -238,9 +238,9 @@ std::vector<std::tuple<int,ResourceManager::Coins>> ResourceManager::GetCoinsSto
     return Vector_to_return;
 }
 
-bool ResourceManager::UpdateCoinsStored(std::string ResourceOutput) {
+bool ResourceManager::UpdateCoinsStored(std::string PathToFile) {
     FileHandler FileHandlerInstance;
-    FileHandlerInstance.ModifyFile(ResourceOutput, CurrentCoinsAsString());
+    FileHandlerInstance.ModifyFile(PathToFile, CurrentCoinsAsString());
     return true;
 }
 
@@ -268,8 +268,8 @@ bool ResourceManager::ProcessCardPayment(int PriceOfProduct) {
 // Check with return is ok but it should also
 // return some details about where there is
 // an inconsistence
-bool ResourceManager::CheckCompilanceOfCoins() {
-    std::vector<std::tuple<int,Coins>> CoinsFromMachine = GetCoinsStoredAsVector(NAME_OF_FILE_WITH_COINS);
+bool ResourceManager::CheckCompilanceOfCoins(std::string PathToFile) {
+    std::vector<std::tuple<int,Coins>> CoinsFromMachine = GetCoinsStoredAsVector(PathToFile);
     if(CoinsFromMachine == VectorOfCash) {
         return true;
     }

@@ -27,15 +27,15 @@ class ResourceManager {
     bool PutResourceIntoVector(Resource Res);
     std::shared_ptr<Resource> CreateResourceObject(int ID, std::string Name, int Price, int Amount);
     void PrintVectorOfResources();
-    bool ProcessResources(std::string ResourcesInput);
+    bool ProcessResources(std::string PathToFile);
 
     bool checkConnectionPayment(bool Connection);
     bool updateConnectionPayment(bool ConnectionStatus);
 
-    bool GetCoinsStored(std::string ResourceInput);
-    std::vector<std::tuple<int,Coins>> GetCoinsStoredAsVector(std::string ResourceInput);
-    bool UpdateCoinsStored(std::string ResourceOutput);
-    bool CheckCompilanceOfCoins();
+    bool GetCoinsStored(std::string PathToFile);
+    std::vector<std::tuple<int,Coins>> GetCoinsStoredAsVector(std::string PathToFile);
+    bool UpdateCoinsStored(std::string PathToFile);
+    bool CheckCompilanceOfCoins(std::string PathToFile);
     void PrintVectorOfCash();
 
     bool ProcessCashPayment(int PriceOfProduct, std::vector<std::tuple<int,Coins>> EnteredCoins);

@@ -19,24 +19,31 @@ int main () {
     Test_3.PutResourceIntoVector(*A);
     Test_3.PrintVectorOfResources();
 
+    std::cout << "step 0" << std::endl;
+
     FileHandler Test_4;
-    std::string STR = Test_4.GetInfoFromFile("resources.txt");
+    std::string STR = Test_4.GetInfoFromFile("/home/nox/Dev/cpp_projects/state_machine_proj/res/resources.txt");
     std::cout << STR << '\n';
 
-    Test_3.ProcessResources("X");
+    std::cout << "step 1" << std::endl;
+
+    Test_3.ProcessResources("/home/nox/Dev/cpp_projects/state_machine_proj/res/resources.txt");
     Test_3.PrintVectorOfResources();
 
-    Test_3.GetCoinsStored("coins.txt");
-    Test_3.PrintVectorOfCash();
-    std::cout << "result> " << Test_3.CheckCompilanceOfCoins() << "\n";
+    std::cout << "step 2" << std::endl;
 
+    Test_3.GetCoinsStored("/home/nox/Dev/cpp_projects/state_machine_proj/res/coins.txt");
+    Test_3.PrintVectorOfCash();
+    std::cout << "result> " << Test_3.CheckCompilanceOfCoins("/home/nox/Dev/cpp_projects/state_machine_proj/res/coins.txt") << "\n";
+
+std::cout << "step 3" << std::endl;
     std::string test_string = "TEST";
-    Test_4.ModifyFile("test_file.txt", test_string);
+    Test_4.ModifyFile("/home/nox/Dev/cpp_projects/state_machine_proj/res/test_file.txt", test_string);
     std::cout << Test_3.CurrentCoinsAsString();
 
     Test_3.UpdateAmountOfCoinsLocally(123, ResourceManager::euro1);
-    Test_3.UpdateCoinsStored("coins.txt");
-    std::cout << "\nresult> " << Test_3.CheckCompilanceOfCoins() << "\n";
+    Test_3.UpdateCoinsStored("/home/nox/Dev/cpp_projects/state_machine_proj/res/coins.txt");
+    std::cout << "\nresult> " << Test_3.CheckCompilanceOfCoins("/home/nox/Dev/cpp_projects/state_machine_proj/res/coins.txt") << "\n";
 
     return 0;
 }

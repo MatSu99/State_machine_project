@@ -8,9 +8,7 @@ FileHandler::~FileHandler() {
 
 }
 
-std::string FileHandler::GetInfoFromFile(std::string NameOfFile) {
-    std::string Path = "../res/";
-    Path += NameOfFile;
+std::string FileHandler::GetInfoFromFile(std::string Path) {
     std::fstream File;
     File.open(Path, std::ios::in);
 
@@ -30,9 +28,7 @@ std::string FileHandler::GetInfoFromFile(std::string NameOfFile) {
     
 }
 
-std::string FileHandler::ModifyFile(std::string NameOfFile, std::string Input) {
-    std::string Path = "../res/";
-    Path += NameOfFile;
+std::string FileHandler::ModifyFile(std::string Path, std::string Input) {
     std::ofstream File;
     File.open(Path, std::ios::out);
 
@@ -48,12 +44,11 @@ std::string FileHandler::ModifyFile(std::string NameOfFile, std::string Input) {
     return "DONE";
 }
 
-std::vector<int> FileHandler::GetInfoCoins(std::string NameOfFile) {
+std::vector<int> FileHandler::GetInfoCoins(std::string Path) {
     std::vector<int> result;
     std::vector<std::string> output;
     std::string from_file;
-    std::string Path = "../res/";
-    Path += NameOfFile;
+
     std::fstream File;
     File.open(Path, std::ios::in);
 
