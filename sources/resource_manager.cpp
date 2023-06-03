@@ -372,3 +372,15 @@ bool ResourceManager::UpdateAmountOfCoinsLocally(int Amount, Coins Coin) {
 
     }
 }
+
+Resource* ResourceManager::GetSpecificResourceRP(int Place) {
+    Resource *PtrToReturn = nullptr;
+
+    if(Place > VectorOfResources.size() || Place < 0) {
+        // Invalid place, return null;
+        return PtrToReturn;
+    }
+
+    PtrToReturn = &VectorOfResources[Place];
+    return PtrToReturn;
+}

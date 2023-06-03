@@ -26,6 +26,7 @@ class ResourceManager {
 
     bool PutResourceIntoVector(Resource Res);
     std::shared_ptr<Resource> CreateResourceObject(int ID, std::string Name, int Price, int Amount);
+    Resource* GetSpecificResourceRP(int Place);
     void PrintVectorOfResources();
     bool ProcessResources(std::string PathToFile);
 
