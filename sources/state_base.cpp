@@ -8,7 +8,7 @@ StateBase::~StateBase() {
 
 };
 
-unsigned int StateBase::GetStateId() {
+ int StateBase::GetStateId() {
     return StateId;
 }
 

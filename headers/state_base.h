@@ -2,8 +2,9 @@
 #include <string>
 
 class StateBase {
+    protected:
     std::string NameOfState;
-    unsigned int StateId;
+    int StateId;
 
 
     public:
@@ -11,6 +12,6 @@ class StateBase {
     ~StateBase();
     virtual bool StartState() = 0;
     virtual bool EndState() = 0;
-    unsigned int GetStateId();
-    std::string GetNameOfState();
+    virtual int GetStateId();
+    virtual std::string GetNameOfState();
 };
