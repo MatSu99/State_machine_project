@@ -8,6 +8,8 @@
 #include "../headers/state_machine.h"
 #include "../headers/resource_manager.h"
 #include "../headers/file_handler.h"
+#include "../headers/initialize_state.h"
+#include "../headers/info_hub.h"
 
 int main () {
     std::cout << "Hello World\n";
@@ -44,6 +46,9 @@ std::cout << "step 3" << std::endl;
     Test_3.UpdateAmountOfCoinsLocally(123, ResourceManager::euro1);
     Test_3.UpdateCoinsStored("/home/nox/Dev/cpp_projects/state_machine_proj/res/coins.txt");
     std::cout << "\nresult> " << Test_3.CheckCompilanceOfCoins("/home/nox/Dev/cpp_projects/state_machine_proj/res/coins.txt") << "\n";
+
+    InfoHub TestInfoHub;
+    InitializeState TestInitState(TestInfoHub, Test_3);
 
     return 0;
 }

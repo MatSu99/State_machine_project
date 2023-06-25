@@ -1,27 +1,23 @@
 #pragma once
 #include "state_base.h"
+#include "info_hub.h"
+#include "resource_manager.h"
+
 
 class InitializeState: StateBase {
     public:
-
-    bool StartState() override final;
-    bool EndState() override final;
+    InfoHub& InfHub;
+    ResourceManager& ResManager;
+    InitializeState(InfoHub& Hub, ResourceManager& Manager);
     InitializeState();
-    InitializeState(int ID);
     ~InitializeState();
+    bool StartState() override final;
+    int EndState() override final;
+    void ManualEnterFilesPaths();
+    bool AutomaticEnterFilesPaths();
+    bool EstablishPaymentConnection();
+    bool EvaluateCurrentStatus();
 
-    enum StateID
-    {
-        INITIALIZE_STATE = 1,
-        MAINTENANCE_STATE = 2,
-        CHECK_RESOURCES_STATE = 3,
-        START_STATE = 4,
-        WAIT_FOR_INPUT_STATE = 5,
-        WAIT_FOR_DECISION_PAYMENT_STATE = 6,
-        CASH_STATE = 7,
-        CARD_STATE = 8,
-        ISSUE_PRODUCT = 9
-    };
 
     private:
 };

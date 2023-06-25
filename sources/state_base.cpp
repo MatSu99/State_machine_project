@@ -9,7 +9,7 @@ StateBase::~StateBase() {
 };
 
  int StateBase::GetStateId() {
-    return StateId;
+    return Id;
 }
 
 std::string StateBase::GetNameOfState() {
