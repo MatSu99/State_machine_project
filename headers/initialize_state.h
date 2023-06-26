@@ -9,7 +9,7 @@ class InitializeState: StateBase {
     InfoHub& InfHub;
     ResourceManager& ResManager;
     InitializeState(InfoHub& Hub, ResourceManager& Manager);
-    InitializeState();
+    InitializeState() = delete;
     ~InitializeState();
     bool StartState() override final;
     int EndState() override final;

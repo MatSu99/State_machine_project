@@ -18,3 +18,22 @@ bool InitializeState::StartState() {
 int InitializeState::EndState() {
     
 }
+
+void InitializeState::ManualEnterFilesPaths() {
+    //TODO Add manual
+}
+
+bool InitializeState::AutomaticEnterFilesPaths() {
+
+    return false;
+}
+
+bool InitializeState::EstablishPaymentConnection() {
+
+    return false;
+}
+
+bool InitializeState::EvaluateCurrentStatus() {
+
+    return false;
+}
